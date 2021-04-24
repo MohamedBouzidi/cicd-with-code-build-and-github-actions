@@ -46,12 +46,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Get AWS Account ID
-      id: get-aws-account-id
-      run: |
-        export ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
-        sed -i "s/<YOUR_AWS_ACCOUNT_ID>/${ACCOUNT_ID}/g" task-definition.json
-
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1

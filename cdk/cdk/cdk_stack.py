@@ -29,7 +29,8 @@ class CdkStack(cdk.Stack):
 
         execution_role = iam.Role(self,
                 "ecs-devops-sandbox-execution-role",
-                assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"))
+                assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
+                role_name="ecs-devops-sandbox-execution-role")
         execution_role.add_to_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
             resources=["*"],
