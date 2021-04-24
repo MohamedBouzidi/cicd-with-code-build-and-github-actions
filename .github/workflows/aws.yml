@@ -50,7 +50,7 @@ jobs:
       id: get-aws-account-id
       run: |
         export ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
-        sed -i 's/<YOUR_AWS_ACCOUNT_ID>/${ACCOUNT_ID}/g' task-definition.json
+        sed -i "s/<YOUR_AWS_ACCOUNT_ID>/${ACCOUNT_ID}/g" task-definition.json
 
     - name: Login to Amazon ECR
       id: login-ecr
